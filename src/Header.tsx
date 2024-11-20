@@ -5,17 +5,18 @@ import icon_todo from "./assets/images/icon-todo.svg";
 import icon_calendar from "./assets/images/icon-calendar.svg";
 import icon_reminders from "./assets/images/icon-reminders.svg";
 import icon_planning from "./assets/images/icon-planning.svg";
-import { useState } from "react";
+import { useContext } from "react";
+import Context from "./Context";
 
 const Header = () => {
-  const [isClose, setIsClose] = useState(false);
+  const { isClose, setIsClose } = useContext(Context);
   return (
     <div className="p-4 max-w-screen-2xl w-full">
       <div className="flex justify-between md:items-center w-full">
         <h1 className="font-bold text-3xl md:basis-20 min-w-24">snap</h1>
         <div
           onClick={() => setIsClose(true)}
-          className={`${isClose ? "hidden" : ""} md:hidden`}
+          className={`${isClose ? "hidden" : ""} md:hidden cursor-pointer`}
         >
           <img src={icon_menu} alt="" />
         </div>
@@ -29,7 +30,7 @@ const Header = () => {
         >
           <img
             onClick={() => setIsClose(false)}
-            className="absolute right-5 top-5 md:hidden"
+            className="absolute right-5 top-5 md:hidden cursor-pointer"
             src={icon_close}
             alt="close-icon"
           />
